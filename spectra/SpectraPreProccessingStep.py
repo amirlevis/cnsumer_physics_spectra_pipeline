@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import numpy as np
 
-class PreProccessingStep(ABC):
+class PreProccessingStep:
     pass
 
 
@@ -81,7 +81,3 @@ class SubtractAvg(TransformPreProccessingStep, FitPreProccessingStep):
 
     def fit(self, spectra : np.array):
         self.avg = spectra.mean(axis = 0)
-
-
-
-

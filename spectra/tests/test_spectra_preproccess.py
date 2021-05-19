@@ -1,5 +1,6 @@
 from unittest import TestCase
 from spectra.SpectraPreProccessingStep import Log, Diff, SelectWavelengths, SubtractAvg
+from spectra.PreProccessPipeline import Pipeline
 import numpy as np
 
 class TestPreProccessStep(TestCase):
@@ -51,6 +52,29 @@ class TestPreProccessStep(TestCase):
         sub = step.transform (np.array([[7.5, 7.0, 9]]))
         is_equal = np.allclose(sub,expected_result)
         self.assertEqual(is_equal, True)
-         
 
+
+class TestPreProccessPipeline(TestCase):
+
+    
+    def test_pipeline_steps_count(self):
+
+        p = Pipeline([Log(), SelectWavelengths(120, 150)])
+
+        expected_result = 2
+
+        self.assertEqual(len(p.steps), expected_result)
+        
+    
+    def test_pipeline_add_steps(self):
+        
+        p = Pipeline([Log(), SelectWavelengths(120, 150)])
+        p.add(Diff())
+        expected_result = 3
+
+        self.assertEqual(len(p.steps), expected_result)
+    
+    
+
+    
 

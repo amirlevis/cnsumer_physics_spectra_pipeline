@@ -1,9 +1,9 @@
 {
-    "python.pythonPath": "C:\\Users\\Development\\.virtualenvs\\consumer_physics_spectra_pipeline-atjw7v7Q\\Scripts\\python.exe",
+    "python.pythonPath": "/Users/amirlevi/.local/share/virtualenvs/consumer_physics_spectra_pipeline-0bWm3HcC/bin/python",
     "python.testing.unittestArgs": [
         "-v",
         "-s",
-        "./spectra",
+        ".",
         "-p",
         "test_*.py"
     ],

@@ -74,7 +74,25 @@ class TestPreProccessPipeline(TestCase):
 
         self.assertEqual(len(p.steps), expected_result)
     
-    
+    def test_pipeline_steps(self):
+        p = Pipeline([SelectWavelengths(1, 3)])
+        spectra = np.array([[7, 2, 5, 4, 5], [6, 7, 8, 9, 10]])
 
-    
+        spectra = p.proccess(spectra)
+        expected_result = np.array([[2, 5, 4], [7, 8, 9]])
+        is_equal = np.array_equal(spectra, expected_result)
+        self.assertEqual(is_equal, True)
 
+        p.add(Log())
+        spectra = p.proccess(spectra)
+        expected_result = np.array([[[0.6931471805599453, 1.6094379124341003, 1.3862943611198906],[1.9459101490553132, 2.0794415416798357, 2.1972245773362196]]])
+        is_equal = np.allclose(spectra,expected_result)
+        self.assertEqual(is_equal, True)
+
+    def test_pipeline_fitted(self):
+
+        spectra = np.array([[1, 2, 3],[4, 5, 6]])
+        p = Pipeline([Log(), SubtractAvg()])
+        p.proccess(spectra)
+
+        self.assertEqual(p.fitted, True)

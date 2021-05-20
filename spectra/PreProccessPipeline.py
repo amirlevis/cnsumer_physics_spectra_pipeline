@@ -1,6 +1,4 @@
-
 from spectra.SpectraPreProccessingStep import PreProccessingStep, TransformPreProccessingStep, FitPreProccessingStep
-from spectra.PreproccessStepList import StepsList
 import numpy as np
 
 class Pipeline:
@@ -48,6 +46,8 @@ class Pipeline:
         self.proccess(spectra)
        
         return spectra
+
+   
 
 
 class PipelineFittedError(Exception):

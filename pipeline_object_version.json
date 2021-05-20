@@ -1,0 +1,25 @@
+{
+  "piplines_objects": [
+    {
+      "version": 1,
+      "persistant_storage_path": "path/to/object",
+      "created_at:": "day/month/year",
+      "fitted": "false",
+      "steps": [
+        {
+          "log": {
+            "version": 1
+          }
+        },
+        {
+          "select_wavelengths": {
+            "version": 1,
+            "from": 120,
+            "to": 150,
+            "jump": 1
+          }
+        }
+      ]
+    }
+  ]
+}

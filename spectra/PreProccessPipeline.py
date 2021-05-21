@@ -24,14 +24,19 @@ class Pipeline:
         if self.fitted:
             raise PipelineFittedError('Pipeline already ran a fit step cant add new preproccess steps')
 
-
         if not isinstance(step, PreProccessingStep):
             raise TypeError(f'step must be only type of {PreProccessingStep}')
         self.steps.append(step)
 
-
+   
     def proccess(self, spectra):
-       
+        '''
+        proccessing steps sequently.
+        if one of the steps is a fit step-> Fitted = True
+
+        Maybe need to implement in an async way, cause maybe spectra is really
+        large of maybe the step is very cpu heavy. (asyncio)
+        '''     
         if len(self.steps) == 0:
             print('No more steps to proccess')
             return 
@@ -46,9 +51,6 @@ class Pipeline:
         self.proccess(spectra)
        
         return spectra
-
-   
-
 
 class PipelineFittedError(Exception):
     ''' Excpetion is raised when pipeline already ran a fit step'''

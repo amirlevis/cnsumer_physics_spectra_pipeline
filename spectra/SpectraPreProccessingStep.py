@@ -7,14 +7,14 @@ class PreProccessingStep:
 
 class FitPreProccessingStep(PreProccessingStep):
 
-    abstractmethod
+    @abstractmethod
     def fit(self):
         pass
 
 
 class TransformPreProccessingStep(PreProccessingStep):
 
-    abstractmethod
+    @abstractmethod
     def transform(self):
         pass
 
